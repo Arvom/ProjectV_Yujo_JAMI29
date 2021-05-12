@@ -14,5 +14,5 @@ public interface IDaoPost{
 
     boolean delete(int id);
 
-    boolean update(String content);
+    boolean update(Post p);
 }

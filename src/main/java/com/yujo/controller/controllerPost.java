@@ -32,7 +32,7 @@ public class controllerPost {
         return dao.post(id);
     }
 
-    @PostMapping
+    @PostMapping("/{id_user}")
     public boolean add(@RequestBody Post p, @PathVariable int id_user){
         return dao.add(p, id_user);
     }
@@ -43,7 +43,7 @@ public class controllerPost {
     }
 
     @PutMapping
-    public boolean update(@PathVariable String content){
-        return dao.update(content); 
+    public boolean update(@RequestBody Post p){
+        return dao.update(p);
     }
 }

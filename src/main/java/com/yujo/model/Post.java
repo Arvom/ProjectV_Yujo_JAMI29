@@ -5,17 +5,17 @@ import com.yujo.util.IMappable;
 public class Post implements IMappable{
 
 	private int id;
-	private String nome;
-	private String cognome;
+	private String name;
+	private String surname;
 	private int id_user;
 	private String content;
 	private String content_time;
 	
-	public Post(int id, String nome, String cognome, int id_user, String content, String content_time) {
+	public Post(int id, String name, String surname, int id_user, String content, String content_time) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.cognome = cognome;
+		this.name = name;
+		this.surname = surname;
 		this.id_user = id_user;
 		this.content = content;
 		this.content_time = content_time;
@@ -30,17 +30,17 @@ public class Post implements IMappable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getname() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setname(String name) {
+		this.name = name;
 	}
-	public String getCognome() {
-		return cognome;
+	public String getsurname() {
+		return surname;
 	}
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setsurname(String surname) {
+		this.surname = surname;
 	}
 	public int getId_user() {
 		return id_user;
@@ -62,7 +62,7 @@ public class Post implements IMappable{
 	}
 	@Override
 	public String toString() {
-		return "{id:" + id + ", nome:" + nome + ", cognome:" + cognome + ", id_user:" + id_user + ", content:" + content
+		return "{id:" + id + ", name:" + name + ", surname:" + surname + ", id_user:" + id_user + ", content:" + content
 				+ ", content_time:" + content_time + "}";
 	}
 	

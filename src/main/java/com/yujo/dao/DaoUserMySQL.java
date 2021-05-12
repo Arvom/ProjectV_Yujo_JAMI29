@@ -16,9 +16,9 @@ import com.yujo.util.IMappable;
 public class DaoUserMySQL extends BasicDao implements IDaoUser{
 
 	public DaoUserMySQL(
-			@Value ("${db.address}") String dbAddress,
-			@Value ("${db.user}") String user,
-			@Value ("${db.password}") String password) {
+			@Value("${db.address}")String dbAddress,
+			@Value("${db.user}") String user,
+			@Value("${db.psw}") String password) {
 		super(dbAddress, user, password);
 	}
 

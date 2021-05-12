@@ -18,14 +18,14 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 	public DaoPostMySQL(
 			@Value ("${db.address}") String dbAddress,
 			@Value ("${db.user}") String user,
-			@Value ("${db.password}") String password) {
+			@Value ("${db.psw}") String password) {
 		super(dbAddress, user, password);
 	}
 
 	@Override
 	public List<Post> posts() {
 		List<Post> ris = new ArrayList<>();
-		List< Map <String,String>> maps = getAll("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user");
+		List< Map <String,String>> maps = getAll("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user ORDER BY content_time DESC");
 		for (Map<String, String> map : maps) {
 			ris.add(IMappable.fromMap(Post.class, map));
 		}
@@ -34,7 +34,7 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 
 	@Override
 	public Post post(int id) {
-		Map<String,String> map = getOne("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user WHERE id=?", id);
+		Map<String,String> map = getOne("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user WHERE posts.id=?", id);
 		return IMappable.fromMap(Post.class, map);
 	}
 
@@ -45,12 +45,12 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 
 	@Override
 	public boolean delete(int id) {
-		return executeAndIsModified("DELETE * FROM posts WHERE id=?", id);
+		return executeAndIsModified("DELETE FROM posts WHERE id=?", id);
 	}
 
 	@Override
-	public boolean update(String content) {
-		return executeAndIsModified("UPDATE posts SET content = ?", content);
+	public boolean update(Post p) {
+		return executeAndIsModified("UPDATE posts SET content = ? WHERE id=?", p.getContent(), p.getId());
 	}
 
 }
