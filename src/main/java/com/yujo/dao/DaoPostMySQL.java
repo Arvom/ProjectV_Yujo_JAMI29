@@ -45,6 +45,7 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 
 	@Override
 	public boolean delete(int id) {
+		execute("DELETE FROM comments WHERE id_post=?", id);
 		return executeAndIsModified("DELETE FROM posts WHERE id=?", id);
 	}
 
