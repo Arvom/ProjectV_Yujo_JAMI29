@@ -8,34 +8,17 @@ $('document').ready(function () {
 
         $.get('post', function(res){
             for (let i = 0; i < res.length; i++) {
-                const post = {
-                    id: 1,
-                    idUtente: 7,
-                    nome: 'Giulio',
-                    cognome: 'Tavano',
-                    commento: 'Ariciao so er primo',
-                    data: 'bhe ora 12.54'
-                }
                 $.get('post.html', function (data) {
                     $('#dashboard').append(data);
-                    $('h6:contains("[USERNAME]")').text(`${post.nome} ${post.cognome}`);
+                    $('h6:contains("[USERNAME]")')
+                        .text(`${res[i].name} ${res[i].surname}`)
+                        .attr('id-author', res[i].id_user);
+                    $('span:contains("[DATE]")').text(`${res[i].content_time}`);
+                    $('p:contains("[CONTENT]")').text(`${res[i].content}`);
+                    $('button[ID-POST="[ID]"]').attr('id-post', res[i].id);
                 })
             }
         })
-
-        const post2 = {
-            id: 2,
-            idUtente: 7,
-            nome: 'Giulio',
-            cognome: 'Tavano',
-            commento: 'Ariciao so er secondo',
-            data: 'bhe ora 13.05'
-        }
-
-        $.get('post.html', function (data) {
-            $('#dashboard').append(data);
-        })
-
     }
 
     getDashboard();
@@ -62,10 +45,18 @@ $('document').ready(function () {
         $.get('userlist_main.html', function (data) {
             $('#main').append(data);
         })
-        for (let i = 0; i < 15; i++) {
-            $.get('user_card.html', function (data) {
-                $('.friends-list').append(data);
-            })
-        }
+        $.get('user', function(res){
+            for (let i = 0; i < res.length; i++) {
+                $.get('user_card.html', function (data) {
+                    $('.friends-list').append(data);
+                    $('div[ID-AUTHOR="[IDAUTHOR]"]')
+                        .attr('id-author', res[i].id);
+                    $('h6:contains("[USERNAME]")')
+                        .text(`${res[i].name} ${res[i].surname}`)
+                })
+            }
+        })
     }
+
+
 })

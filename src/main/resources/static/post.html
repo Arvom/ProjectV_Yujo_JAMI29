@@ -4,14 +4,14 @@
     <div class="profile-thumb">
       <a href="#">
         <figure class="profile-thumb-middle">
-          <img src="http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQRmj9gO7hiNSpI6D7-3UE5ejpqfRdocu1jEEB-HIkBivMZz0GJ1-1-3mBR5Ept">
+          <img src="https://cdn.hackaday.io/images/resize/600x600/2399971484117200492.png">
         </figure>
       </a>
     </div>
 
     <div class="posted-author">
-      <h6 class="author">[USERNAME]</h6>
-      <span class="post-time">15 min ago</span>
+      <h6 class="author" ><a class="to-author" id-author="[IDAUTHOR]">[USERNAME]</a></h6>
+      <span class="post-time">[DATE]</span>
     </div>
 
     <div class="post-settings-bar">
@@ -21,10 +21,10 @@
       <div class="post-settings arrow-shape">
         <ul>
           <li>
-            <button>Cancella Post</button>
+            <button class="btn-delete-post" id-post="[ID]">Cancella Post</button>
           </li>
           <li>
-            <button>Modifica Post</button>
+            <button class="btn-edit-post" id-post="[ID]">Modifica Post</button>
           </li>
         </ul>
       </div>
@@ -32,9 +32,11 @@
   </div>
   <div class="post-content">
     <p class="post-desc pb-0">
-      Ceglie Messapica è bella
+      [CONTENT]
     </p>
     <hr>
+    <div id="comments">
+    </div>
     <div class="share-content-box w-100">
       <form class="share-text-box">
                                     <textarea name="share" class="share-text-field" aria-disabled="true"
