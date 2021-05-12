@@ -43,11 +43,19 @@ $('document').ready(function () {
     $('#home').click(function () {
         $('#main').html('');
         getDashboard();
+        $('#switch1').addClass('active');
+        $('#switch1').removeClass('notification-trigger');
+        $('#switch3').addClass('notification-trigger');
+        $('#switch3').removeClass('active');
     })
 
     $('#user-list').click(function () {
         $('#main').html('');
         getUserList();
+        $('#switch1').removeClass('active');
+        $('#switch1').addClass('msg-trigger');
+        $('#switch3').removeClass('notification-trigger');
+        $('#switch3').addClass('active');
     })
 
     function getUserList() {
