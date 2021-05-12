@@ -35,7 +35,12 @@ public class DaoUserMySQL extends BasicDao implements IDaoUser{
 	@Override
 	public User user(int id) {
 		Map<String,String> map = getOne("SELECT * FROM users WHERE id = ?", id);
-		return IMappable.fromMap(User.class, map);
+		if(map!= null){
+			return IMappable.fromMap(User.class, map);
+		}else{
+			return null;
+		}
+
 	}
 
 	@Override
@@ -56,12 +61,17 @@ public class DaoUserMySQL extends BasicDao implements IDaoUser{
 
 	@Override
 	public boolean update(User u) {
-		return executeAndIsModified("UPDATE users SET tax_code, name=?, surname=?, phone=?, address=? WHERE id = ?", u.getTax_code(),
-				u.getName(),
-				u.getSurname(),
-				u.getPhone(),
-				u.getPhone(),
-				u.getAddress());
+		if(u!= null){
+			return executeAndIsModified("UPDATE users SET tax_code, name=?, surname=?, phone=?, address=? WHERE id = ?", u.getTax_code(),
+					u.getName(),
+					u.getSurname(),
+					u.getPhone(),
+					u.getPhone(),
+					u.getAddress());
+		}else{
+			return false;
+		}
+
 	}
 	
 	

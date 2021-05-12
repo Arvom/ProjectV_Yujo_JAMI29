@@ -35,12 +35,22 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 	@Override
 	public Post post(int id) {
 		Map<String,String> map = getOne("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user WHERE posts.id=?", id);
-		return IMappable.fromMap(Post.class, map);
+		if(map!= null){
+			return IMappable.fromMap(Post.class, map);
+		}else{
+			return null;
+		}
+
 	}
 
 	@Override
 	public boolean add(Post p, int id_user) {
-		return executeAndIsModified("INSERT INTO posts (id_user, content) values (?,?)", id_user ,p.getContent());
+		if(p!= null){
+			return executeAndIsModified("INSERT INTO posts (id_user, content) values (?,?)", id_user ,p.getContent());
+		}else{
+			return false;
+		}
+
 	}
 
 	@Override
@@ -51,7 +61,12 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 
 	@Override
 	public boolean update(Post p) {
-		return executeAndIsModified("UPDATE posts SET content = ? WHERE id=?", p.getContent(), p.getId());
+		if(p!= null){
+			return executeAndIsModified("UPDATE posts SET content = ? WHERE id=?", p.getContent(), p.getId());
+		}else{
+			return false;
+		}
+
 	}
 
 }

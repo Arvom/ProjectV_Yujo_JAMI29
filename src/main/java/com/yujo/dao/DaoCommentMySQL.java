@@ -19,19 +19,20 @@ public class DaoCommentMySQL extends BasicDao implements IDaoComment{
 	public DaoCommentMySQL(
 			@Value ("${db.address}") String dbAddress,
 			@Value ("${db.user}") String user,
-			@Value ("${db.password}") String password){
+			@Value ("${db.psw}") String password){
 		super(dbAddress, user, password);
 	}
 
 	private Comment setStuffInComment(int id_post, int id_user, Map<String, String> map) {
-		Post p = IMappable.fromMap(Post.class, getOne("SELECT * FROM posts WHERE id = ?", id_post));
+		Post p = IMappable.fromMap(Post.class, getOne("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user WHERE posts.id = ?", id_post));
 		User u = IMappable.fromMap(User.class, getOne("SELECT * FROM users WHERE id = ?", id_user));
 		Comment c = IMappable.fromMap(Comment.class, map);
 		c.setPost(p);
 		c.setUser(u);
 		return c;
 	}
-	
+
+
 	@Override
 	public List<Comment> comments(int id_post) {
 		List<Comment> res = new ArrayList<>();
@@ -45,19 +46,27 @@ public class DaoCommentMySQL extends BasicDao implements IDaoComment{
 
 	@Override
 	public boolean add(Comment c) {
-		return executeAndIsModified("INSERT INTO comments (id_user, id_post, content) VALUES (?,?,?)",c.getUser().getId(), c.getPost().getId(), c.getContent());
+		if(c!= null){
+			return executeAndIsModified("INSERT INTO comments (id_user, id_post, content) VALUES (?,?,?)",c.getUser().getId(), c.getPost().getId(), c.getContent());
+		}else{
+			return false;
+		}
 	}
+
 
 	@Override
 	public boolean delete(int id) {
-		
-		return false;
+		return executeAndIsModified("DELETE FROM comments WHERE id=?",id);
 	}
 
 	@Override
 	public boolean update(Comment c) {
-		
-		return false;
+		if(c!= null){
+			return executeAndIsModified("UPDATE comments SET content=? WHERE id=?", c.getContent(), c.getId());
+		}else{
+			return false;
+		}
+
 	}
 
 }
