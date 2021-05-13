@@ -77,7 +77,7 @@ $('document').ready(function () {
             }
         })
     }
-
+/*
     $('#main').on('click', '#btn-add-post', function () {
         const post = {
             content: $('#add-content').val()
@@ -142,24 +142,43 @@ $('document').ready(function () {
     }
 
     $('#main').on('click', '.btn-edit-post', function () {
-        idPost = $(this).attr('id-post');
+        let idPost = $(this).attr('id-post');
         modalEditPost(idPost);
 
     })
 
     function modalEditPost(idPost){
         $.get(`post/${idPost}`, function(res){
-            $.get('edit_post.html', function(data){
-                $('#modal').html('');
-                $('#modal').append(data);
-                $('textarea:contains("[CONTENT]")').text(`${res.content}`);
-            })
+                $('#edit-content').text(`${res.content}`);
+                $('#btn-edit-post').attr('id-post',`${res.id}`);
         })
     }
 
-    function editPost(){
+    $('#main').on('click', '#btn-edit-post', function () {
+        const post = {
+            id: $(this).attr('id-post'),
+            content: $('#edit-content').val()
+        }
+        editPost(post);
+    })
 
+    function editPost(post){
+        $.ajax({
+            url: 'post',
+            type: 'PUT',
+            data: JSON.stringify(post),
+            contentType: 'application/json',
+            success: function(msg) {
+                if(msg){
+                    $('#textbox').fadeOut(300);
+                    $('.modal-backdrop').fadeOut(300);
+                    renderPosts();
+                }else{
+                    alert('C\'è stato un errore nel sistema')
+                }
+            }
+        })
     }
 
-
+ */
 })
