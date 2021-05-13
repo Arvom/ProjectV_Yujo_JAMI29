@@ -41,6 +41,15 @@ $('document').ready(function () {
         $('#switch3').addClass('active');
     })
 
+    $('#user-list2').click(function () {
+        $('#main').html('');
+        getUserList();
+        $('#switch1').removeClass('active');
+        $('#switch1').addClass('msg-trigger');
+        $('#switch3').removeClass('notification-trigger');
+        $('#switch3').addClass('active');
+    })
+
     function getUserList() {
         $.get('userlist_main.html', function (data) {
             $('#main').append(data);
