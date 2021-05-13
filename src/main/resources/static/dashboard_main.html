@@ -37,7 +37,7 @@
                             <form class="share-text-box">
                                     <textarea name="share" class="share-text-field" aria-disabled="true"
                                               placeholder="Dicci qualcosa" data-toggle="modal"
-                                              data-target="#textbox"></textarea>
+                                              data-target="#textbox" readonly></textarea>
                             </form>
                         </div>
                         <div class="modal fade" id="textbox" aria-labelledby="textbox">
@@ -51,21 +51,19 @@
                                     </div>
                                     <div class="modal-body custom-scroll">
                                             <textarea name="share" class="share-field-big custom-scroll"
-                                                      placeholder="Dicci qualcosa"></textarea>
+                                                      placeholder="Dicci qualcosa" id="add-content"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="post-share-btn" data-dismiss="modal">cancel
                                         </button>
-                                        <button type="button" class="post-share-btn">post</button>
+                                        <button type="button" class="post-share-btn" data-dismiss="modal" id="btn-add-post" id-author="[IDAUTHOR]">post</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div id="dashboard"></div>
-
             </div>
         </div>
     </div>
