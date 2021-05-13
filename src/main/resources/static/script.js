@@ -144,6 +144,7 @@ $('document').ready(function () {
     $('#main').on('click', '.btn-edit-post', function () {
         idPost = $(this).attr('id-post');
         modalEditPost(idPost);
+
     })
 
     function modalEditPost(idPost){
@@ -159,4 +160,6 @@ $('document').ready(function () {
     function editPost(){
 
     }
+
+
 })
