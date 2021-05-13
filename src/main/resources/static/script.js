@@ -131,9 +131,4 @@ $('document').ready(function () {
             }
         })
     }
-
-    $('#main').on('click', '.btn-delete-post', function () {
-        idPost = $(this).attr('id-post');
-        deletePost(idPost);
-    })
 })
