@@ -1,8 +1,9 @@
 $('document').ready(function () {
 
     function getDashboard() {
-        $('#main').html('');
+
         $.get('dashboard_main.html', function (data) {
+            $('#main').html('');
             $('#main').append(data);
 
             // TODO ID DA SESSIONE -----------------
@@ -14,10 +15,12 @@ $('document').ready(function () {
     }
 
     function renderPosts(){
-        $('#dashboard').html('');
+
         $.get('post', function (res) {
+            $('#dashboard').html('');
             for (let i = 0; i < res.length; i++) {
                 $.get('post.html', function (data) {
+
                     $('#dashboard').append(data);
                     $('h6:contains("[USERNAME]")')
                         .text(`${res[i].name} ${res[i].surname}`)
@@ -53,10 +56,15 @@ $('document').ready(function () {
     })
 
     function getUserList() {
-        $('#main').html('');
+
         $.get('userlist_main.html', function (data) {
+            $('#main').html('');
             $('#main').append(data);
         })
+        renderUsers();
+    }
+
+    function renderUsers() {
         $.get('user', function (res) {
             for (let i = 0; i < res.length; i++) {
                 $.get('user_card.html', function (data) {
@@ -88,7 +96,8 @@ $('document').ready(function () {
                 if (msg) {
                     $('#textbox').fadeOut(300);
                     $('.modal-backdrop').fadeOut(300);
-                    renderPosts()
+                    renderPosts();
+                    $('#add-content').val('');
                 } else {
                     alert('C\'è stato un errore nel sistema')
                 }
@@ -108,7 +117,7 @@ $('document').ready(function () {
 
     function getProfile(){
         $('#main').html('');
-        $.get('profilo.html', function (data) {
+        $.get('profile.html', function (data) {
             $('#main').append(data);
         })
     }
@@ -130,5 +139,24 @@ $('document').ready(function () {
                 }
             }
         })
+    }
+
+    $('#main').on('click', '.btn-edit-post', function () {
+        idPost = $(this).attr('id-post');
+        modalEditPost(idPost);
+    })
+
+    function modalEditPost(idPost){
+        $.get(`post/${idPost}`, function(res){
+            $.get('edit_post.html', function(data){
+                $('#modal').html('');
+                $('#modal').append(data);
+                $('textarea:contains("[CONTENT]")').text(`${res.content}`);
+            })
+        })
+    }
+
+    function editPost(){
+
     }
 })
