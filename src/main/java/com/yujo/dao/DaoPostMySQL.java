@@ -15,6 +15,13 @@ import com.yujo.util.IMappable;
 public class DaoPostMySQL extends BasicDao implements IDaoPost {
 
 	
+	private static final String UPDATE_POST = "UPDATE posts SET content = ?";
+	private static final String DELETE_POST = "DELETE FROM posts";
+	private static final String INSERT_INTO_POSTS = "INSERT INTO posts (id_user, content) values (?,?)";
+	private static final String DESC = " ORDER BY content_time DESC";
+	private static final String WHERE_POST_ID = " WHERE posts.id=?";
+	private static final String SELECT__POSTS = "SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user";
+
 	public DaoPostMySQL(
 			@Value ("${db.address}") String dbAddress,
 			@Value ("${db.user}") String user,
@@ -25,7 +32,7 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 	@Override
 	public List<Post> posts() {
 		List<Post> ris = new ArrayList<>();
-		List< Map <String,String>> maps = getAll("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user ORDER BY content_time DESC");
+		List< Map <String,String>> maps = getAll(SELECT__POSTS+DESC);
 		for (Map<String, String> map : maps) {
 			ris.add(IMappable.fromMap(Post.class, map));
 		}
@@ -34,39 +41,23 @@ public class DaoPostMySQL extends BasicDao implements IDaoPost {
 
 	@Override
 	public Post post(int id) {
-		Map<String,String> map = getOne("SELECT name, surname, posts.* FROM posts INNER JOIN users ON users.id = posts.id_user WHERE posts.id=?", id);
-		if(map!= null){
-			return IMappable.fromMap(Post.class, map);
-		}else{
-			return null;
-		}
-
+		Map<String,String> map = getOne(SELECT__POSTS +WHERE_POST_ID, id);
+		return IMappable.fromMap(Post.class, map);
 	}
 
 	@Override
 	public boolean add(Post p, int id_user) {
-		if(p!= null){
-			return executeAndIsModified("INSERT INTO posts (id_user, content) values (?,?)", id_user ,p.getContent());
-		}else{
-			return false;
-		}
-
+		return executeAndIsModified(INSERT_INTO_POSTS, id_user ,p.getContent());
 	}
 
 	@Override
 	public boolean delete(int id) {
-		execute("DELETE FROM comments WHERE id_post=?", id);
-		return executeAndIsModified("DELETE FROM posts WHERE id=?", id);
+		return executeAndIsModified(DELETE_POST+ WHERE_POST_ID, id);
 	}
 
 	@Override
 	public boolean update(Post p) {
-		if(p!= null){
-			return executeAndIsModified("UPDATE posts SET content = ? WHERE id=?", p.getContent(), p.getId());
-		}else{
-			return false;
-		}
-
+		return executeAndIsModified(UPDATE_POST + WHERE_POST_ID, p.getContent(), p.getId());
 	}
 
 }
