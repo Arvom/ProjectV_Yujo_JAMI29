@@ -1565,6 +1565,13 @@ textarea:focus {
     text-transform: capitalize;
 }
 
+.commentauthor {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: capitalize;
+}
+
 .author a {
     color: #333333;
 }
