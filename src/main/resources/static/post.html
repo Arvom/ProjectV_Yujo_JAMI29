@@ -1,51 +1,49 @@
 <div class="card">
+    <div class="post-title d-flex align-items-center">
+        <div class="profile-thumb">
+            <a href="#">
+                <figure class="profile-thumb-middle">
+                    <img src="https://cdn.hackaday.io/images/resize/600x600/2399971484117200492.png">
+                </figure>
+            </a>
+        </div>
 
-  <div class="post-title d-flex align-items-center">
-    <div class="profile-thumb">
-      <a href="#">
-        <figure class="profile-thumb-middle">
-          <img src="https://cdn.hackaday.io/images/resize/600x600/2399971484117200492.png">
-        </figure>
-      </a>
+        <div class="posted-author">
+            <h6 class="author"><a class="to-author" id-author="[IDAUTHOR]">[USERNAME]</a></h6>
+            <span class="post-time">[DATE]</span>
+        </div>
+        <div class="post-settings-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="post-settings arrow-shape">
+                <ul>
+                    <li>
+                        <button class="btn-delete-post" id-post="[ID]">Cancella Post</button>
+                    </li>
+                    <li>
+                        <button class="btn-edit-post" id-post="[ID]" data-toggle="modal"
+                                data-target="#modalemodificapost">Modifica Post
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="posted-author">
-      <h6 class="author" ><a class="to-author" id-author="[IDAUTHOR]">[USERNAME]</a></h6>
-      <span class="post-time">[DATE]</span>
-    </div>
-
-    <div class="post-settings-bar">
-      <span></span>
-      <span></span>
-      <span></span>
-      <div class="post-settings arrow-shape">
-        <ul>
-          <li>
-            <button class="btn-delete-post" id-post="[ID]">Cancella Post</button>
-          </li>
-          <li>
-            <button class="btn-edit-post" id-post="[ID]"  data-toggle="modal" data-target="#modalemodificapost">Modifica Post</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="post-content">
-    <p class="post-desc pb-0">
-      [CONTENT]
-    </p>
-    <hr>
-    <div class="comments" id-post="[IDPOST]" style="background-color: #f1f1f1;padding: 15px;margin: 15px;">
-
-    </div>
-
-    <div class="share-content-box w-100">
-      <form class="share-text-box">
+    <div class="post-content">
+        <p class="post-desc pb-0">
+            [CONTENT]
+        </p>
+        <hr>
+        <div class="share-content-box w-100">
+            <form class="share-text-box  align-items-center">
                                     <textarea name="share" class="share-text-field" aria-disabled="true"
                                               placeholder="Scrivi commento..." data-target="#textbox"></textarea>
-        <button class="btn-share" type="submit">Commenta</button>
-      </form>
+                <button class="btn-share" type="submit">Commenta</button>
+            </form>
+        </div>
+        <div class="comments" id-post="[IDPOST]">
+        </div>
     </div>
-  </div>
 </div>
