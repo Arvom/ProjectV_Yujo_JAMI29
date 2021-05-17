@@ -6,11 +6,11 @@ import com.yujo.model.Post;
 
 public interface IDaoPost{
 
-	List<Post> posts();
+	List<Post> posts(String uploadDir);
 
     Post post(int id);
 
-    boolean add(Post p, int id_user);
+    boolean add(Post p);
 
     boolean delete(int id);
 
