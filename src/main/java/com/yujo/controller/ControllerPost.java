@@ -28,7 +28,7 @@ public class ControllerPost {
 	private FileStorageService fs;
 	
 	@Autowired
-	public controllerPost(FileStorageService fs) {
+	public ControllerPost(FileStorageService fs) {
 		this.fs = fs;
 	}
 	
