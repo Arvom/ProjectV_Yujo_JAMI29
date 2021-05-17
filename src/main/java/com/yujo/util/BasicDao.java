@@ -148,7 +148,7 @@ public abstract class BasicDao {
 	
 	/**
 	 * Restituisce un PreparedStatement che � in grado di fornire l'id dell'inserimento
-	 * @param la query da inviare
+	 * @param sql la query da inviare
 	 * @param conditions il/i valore/i da sostituire ai placeholders della query
 	 * @return Il PreparedStatement contenente la query con i placeholders sostituiti
 	 * @throws SQLException
@@ -166,7 +166,7 @@ public abstract class BasicDao {
 	/**
 	 * Metodo che effetua una insert e restituisce l'id che viene auto generato 
 	 * dal DB
-	 * @param la query da inviare
+	 * @param sql la query da inviare
 	 * @param conditions il/i valore/i da sostituire ai placeholders della query
 	 * @return l'id generato dal db per questo insert
 	 */

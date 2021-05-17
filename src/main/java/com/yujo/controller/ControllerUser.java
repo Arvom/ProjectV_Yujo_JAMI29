@@ -33,18 +33,18 @@ public class ControllerUser {
     }
 
     @PostMapping()
-    public void post(@RequestBody User u) {
-        dao.add(u);
+    public String post(@RequestBody User u) {
+        return dao.add(u);
     }
 
     @PutMapping()
-    public void put(@RequestBody User u) {
-        dao.update(u);
+    public boolean put(@RequestBody User u) {
+        return dao.update(u);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
-        dao.delete(id);
+    public boolean delete(@PathVariable int id) {
+        return dao.delete(id);
     }
 
 }

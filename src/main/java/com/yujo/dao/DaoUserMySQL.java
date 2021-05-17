@@ -45,12 +45,13 @@ public class DaoUserMySQL extends BasicDao implements IDaoUser{
 	}
 
 	@Override
-	public boolean add(User u) {
-		return executeAndIsModified(INSERT_INTO_USERS, u.getTax_code(),
+	public String add(User u) {
+		int ris = insertAndGetId(INSERT_INTO_USERS, u.getTax_code(),
 				u.getName(),
 				u.getSurname(),
 				u.getPhone(),
 				u.getAddress());
+		return "{ \"id\" : \"" + ris + "\"}";
 	}
 
 	@Override

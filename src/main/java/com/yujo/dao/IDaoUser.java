@@ -9,7 +9,7 @@ public interface IDaoUser {
 
     User user(int id);
 
-    boolean add(User u);
+    String add(User u);
 
     boolean delete(int id);
 
