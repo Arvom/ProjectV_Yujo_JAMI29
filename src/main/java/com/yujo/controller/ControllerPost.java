@@ -24,20 +24,12 @@ import com.yujo.service.FileStorageService;
 public class ControllerPost {
 
 	
-	
-	private FileStorageService fs;
-	
-	@Autowired
-	public ControllerPost(FileStorageService fs) {
-		this.fs = fs;
-	}
-	
 	@Autowired
     private IDaoPost dao;
 
     @GetMapping()
-    public List<Post> get(@Value("${file.upload}") String uploadDir){
-        return dao.posts(uploadDir);
+    public List<Post> get(){
+        return dao.posts();
     }
 
     //lista post per utente??
@@ -57,9 +49,7 @@ public class ControllerPost {
     
    
     @PostMapping()
-    public boolean add(@RequestBody Post p , @RequestParam MultipartFile file){
-    	String fileName = fs.salvaFile(file);          
-    	p.setImage(fileName);
+    public boolean add(@RequestBody Post p ){
         return dao.add(p);
     }
 

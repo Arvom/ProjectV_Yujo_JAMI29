@@ -6,7 +6,7 @@ import com.yujo.model.Post;
 
 public interface IDaoPost{
 
-	List<Post> posts(String uploadDir);
+	List<Post> posts();
 
     Post post(int id);
 

@@ -1,15 +1,28 @@
 package com.yujo.model;
 
+import com.yujo.service.FileStorageService;
 import com.yujo.util.IMappable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Post implements IMappable{
+
+	static @Value("${file.upload}") String uploadDir;
 
 	private int id;
 	private User user;
 	private String content;
 	private String content_time;
 	private String image;
-	
+
+	private FileStorageService fs;
+
+	@Autowired
+	public Post(FileStorageService fs) {
+		this.fs = fs;
+	}
+
 	public Post(int id, User user, String content, String content_time, String image) {
 		super();
 		this.id = id;
@@ -21,7 +34,7 @@ public class Post implements IMappable{
 	public Post() {
 		super();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -49,10 +62,22 @@ public class Post implements IMappable{
 	public String getImage() {
 		return image;
 	}
-	public void setImage(String image) {
-		this.image = image;
+
+	public void setImage( MultipartFile file ) {
+		if(file == null){
+			image = null;
+		} else {
+			String fileName = fs.salvaFile(file);
+			image = uploadDir + fileName;
+		}
+
 	}
-	
+
+	public void setImage( String image ) {
+		this.image = image;
+
+	}
+
 	@Override
 	public String toString() {
 		return "{id:" + id + ", user:" + user + ", content:" + content + ", content_time:" + content_time + ", image:"
