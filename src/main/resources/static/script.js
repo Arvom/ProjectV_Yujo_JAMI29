@@ -8,7 +8,7 @@ $('document').ready(function () {
 
             // TODO ID DA SESSIONE -----------------
 
-            $('button[ID-AUTHOR="[IDAUTHOR]"]')
+            $('#btn-add-post')
                 .attr('id-author', 1);
         })
         renderPosts()
@@ -31,7 +31,7 @@ $('document').ready(function () {
                     $('p:contains("[CONTENT]")').text(`${res[i].content}`);
                     $('button[ID-POST="[ID]"]').attr('id-post', res[i].id);
                     $('div[ID-POST="[IDPOST]"]').attr('id-post', res[i].id);
-                    if(res[i].image != null){
+                    if (res[i].image != null) {
                         $.get('img_post.html', function (data) {
                             $(`.append-img[ID-POST="${res[i].id}"]`).append(data);
                             $('img[SRC="[URLIMAGE]"]').attr('src', res[i].image);
@@ -116,38 +116,59 @@ $('document').ready(function () {
         })
     }
 
+
     $('#main').on('click', '#btn-add-post', function () {
-        const post = {
-            user: {
-                id : $(this).attr('id-author')
-            },
-            content: $('#add-content').val()
-        }
-        // var myFormData = new FormData();
-        // myFormData.append('pictureFile', $('#image-post')[0].files);
-        // console.log($('#image-post').get(0).files[0])
-        // if($('#image-post').val() != null) {
-        //     post.image = myFormData;
-        // }
-        addPost(post);
+        let form = $('#image-post')[0];
+        let data = new FormData(form);
+        saveImage(data)
     })
+
+    function saveImage(data) {
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: 'post/upload',
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (res) {
+                const post = {
+                    user: {
+                        id: $('#btn-add-post').attr('id-author')
+                    },
+                    content: $('#add-content').val(),
+                }
+                if (res != "") {
+                    post.image = res
+                }
+                addPost(post);
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        })
+    }
+
     function addPost(post) {
 
         $.ajax({
-            url: `post`,
+            url: 'post',
             type: 'POST',
             processData: false,
-            contentType: false,
+            contentType: 'false',
             data: JSON.stringify(post),
             contentType: 'application/json',
-            success: function (msg) {
-                if (msg) {
+            success: function (res) {
+                if (res) {
                     $('#textbox').fadeOut(300);
                     $('.modal-backdrop').fadeOut(300);
                     renderPosts();
                     $('#add-content').val('');
+                    $('#file-input').val('');
                 } else {
-                    alert('C\'è stato un errore nel sistema')
+                    alert('C\'è stato un errore nel database')
                 }
             }
         })
