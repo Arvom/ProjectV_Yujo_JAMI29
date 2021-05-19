@@ -33,7 +33,7 @@ public class ControllerUser {
     }
 
     @PostMapping()
-    public String post(@RequestBody User u) {
+    public boolean post(@RequestBody User u) {
         return dao.add(u);
     }
 
