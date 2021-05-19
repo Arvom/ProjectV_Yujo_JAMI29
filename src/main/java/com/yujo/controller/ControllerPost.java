@@ -23,43 +23,45 @@ import com.yujo.service.FileStorageService;
 @RequestMapping("/post")
 public class ControllerPost {
 
-	
-	@Autowired
+
+    @Autowired
+    private FileStorageService fs;
+    @Autowired
     private IDaoPost dao;
 
     @GetMapping()
-    public List<Post> get(){
+    public List<Post> get() {
         return dao.posts();
     }
 
-    //lista post per utente??
+    //lista post per utente
     @GetMapping("/{id}")
-    public Post getOne(@PathVariable int id){
-    	
-        return dao.post(id);
-    }    
-    
-    ////	@PostMapping("/upload")
-    ////	public String uploadFile(@RequestParam MultipartFile file) {
-    ////		String nomeFile = fs.salvaFile(file);
-    ////		dao.addFile(nomeFile);
-    ////		return "Ok";
-    ////	}
+    public Post getOne( @PathVariable int id ) {
 
-    
-   
+        return dao.post( id );
+    }
+
+
+    @PostMapping("/upload")
+    public String uploadFile( @RequestParam MultipartFile file ) {
+        if ( !file.isEmpty() ) {
+            return fs.salvaFile( file );
+        }
+        return null;
+    }
+
     @PostMapping()
-    public boolean add(@RequestBody Post p ){
-        return dao.add(p);
+    public boolean add( @RequestBody Post p ) {
+        return dao.add( p );
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable int id ){
-        return dao.delete(id);
+    public boolean delete( @PathVariable int id ) {
+        return dao.delete( id );
     }
 
     @PutMapping
-    public boolean update(@RequestBody Post p){
-        return dao.update(p);
+    public boolean update( @RequestBody Post p ) {
+        return dao.update( p );
     }
 }
