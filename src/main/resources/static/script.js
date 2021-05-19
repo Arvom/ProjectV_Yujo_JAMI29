@@ -63,7 +63,7 @@ $('document').ready(function () {
 
     getDashboard();
 
-    $('#home, #home2').click(function () {
+    $('#home, #home2, #home3').click(function () {
         getDashboard();
         $('#switch1').addClass('active');
         $('#switch1').removeClass('notification-trigger');
@@ -73,7 +73,7 @@ $('document').ready(function () {
         $('#switch3').removeClass('active');
     })
 
-    $('#user-list, #user-list2').click(function () {
+    $('#user-list, #user-list2, #user-list3').click(function () {
         getUserList();
         $('#switch3').addClass('active');
         $('#switch3').removeClass('notification-trigger');
@@ -83,7 +83,7 @@ $('document').ready(function () {
         $('#switch2').removeClass('active');
     })
 
-    $('#profile').click(function () {
+    $('#profile, #profile3').click(function () {
         getProfile();
         $('#switch2').addClass('active');
         $('#switch2').removeClass('notification-trigger');
