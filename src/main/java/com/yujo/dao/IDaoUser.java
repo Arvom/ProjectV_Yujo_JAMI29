@@ -22,4 +22,5 @@ public interface IDaoUser {
     User findByEmail(String email);
 
     List<User>findByRole(String role);
+
 }

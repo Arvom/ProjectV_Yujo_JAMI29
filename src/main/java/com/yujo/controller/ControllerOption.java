@@ -36,8 +36,6 @@ public class ControllerOption {
 	public void post(@RequestBody Option o, @PathVariable int id) {
 	  dao.add(o, id);
 	}
-	
-	
 
 	@PutMapping()
 	public void put(@RequestBody Option o) {

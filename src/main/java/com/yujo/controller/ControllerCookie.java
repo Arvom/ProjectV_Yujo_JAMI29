@@ -18,7 +18,7 @@ public class ControllerCookie {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             return Arrays.stream(cookies)
-                    .map(c -> c.getName() + "=" + c.getValue()).collect( Collectors.joining(", "));
+                    .map(c -> c.getName() + "=" + c.getValue()).collect( Collectors.joining(","));
         }
 
         return null;

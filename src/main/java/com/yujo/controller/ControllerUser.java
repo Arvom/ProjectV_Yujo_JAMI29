@@ -52,4 +52,9 @@ public class ControllerUser {
         return dao.delete(id);
     }
 
+    @GetMapping("checkEmail/{email}")
+    public boolean checkEmail(@PathVariable String  email){
+        return dao.findByEmail( email ) == null;
+    }
+
 }

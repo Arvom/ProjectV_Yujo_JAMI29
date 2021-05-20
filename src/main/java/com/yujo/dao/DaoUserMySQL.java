@@ -98,4 +98,5 @@ public class DaoUserMySQL extends BasicDao implements IDaoUser{
 		return ris;
 
 	}
+
 }

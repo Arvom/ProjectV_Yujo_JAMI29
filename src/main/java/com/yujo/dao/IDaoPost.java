@@ -8,7 +8,7 @@ public interface IDaoPost{
 
 	List<Post> posts();
 
-    Post post(int id);
+	List<Post> posts(int id);
 
     boolean add(Post p);
 
