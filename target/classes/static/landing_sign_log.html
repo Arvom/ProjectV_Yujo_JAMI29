@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,13 +6,13 @@
   <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
   :root {
-    --left-bg-color: rgba(255, 0, 0, 0.7);
-    --right-bg-color: rgba(255, 255, 255, 0.8);
-    --left-btn-hover-color: rgb(255, 255, 255);
-    --right-btn-hover-color: rgb(255, 0, 0);
-    --hover-width: 75%;
-    --other-width: 25%;
-    --speed: 1000ms;
+    &#45;&#45;left-bg-color: rgba(255, 0, 0, 0.7);
+    &#45;&#45;right-bg-color: rgba(255, 255, 255, 0.8);
+    &#45;&#45;left-btn-hover-color: rgb(255, 255, 255);
+    &#45;&#45;right-btn-hover-color: rgb(255, 0, 0);
+    &#45;&#45;hover-width: 75%;
+    &#45;&#45;other-width: 25%;
+    &#45;&#45;speed: 1000ms;
   }
 
   * {
@@ -65,13 +65,13 @@
   }
 
   .split.left .btn:hover {
-    background-color: var(--right-btn-hover-color);
-    border-color: var(--right-btn-hover-color);
+    background-color: var(&#45;&#45;right-btn-hover-color);
+    border-color: var(&#45;&#45;right-btn-hover-color);
   }
 
   .split.right .btn:hover {
-    background-color: var(--right-btn-hover-color);
-    border-color: var(--right-btn-hover-color);
+    background-color: var(&#45;&#45;right-btn-hover-color);
+    border-color: var(&#45;&#45;right-btn-hover-color);
   }
 
   .container {
@@ -100,7 +100,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--left-bg-color);
+    background-color: var(&#45;&#45;left-bg-color);
   }
 
   .split.right {
@@ -115,30 +115,30 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--right-bg-color);
+    background-color: var(&#45;&#45;right-bg-color);
   }
 
   .split.right,
   .split.left,
   .split.right::before,
   .split.left::before {
-    transition: all var(--speed) ease-in-out;
+    transition: all var(&#45;&#45;speed) ease-in-out;
   }
 
   .hover-left .left {
-    width: var(--hover-width);
+    width: var(&#45;&#45;hover-width);
   }
 
   .hover-left .right {
-    width: var(--other-width);
+    width: var(&#45;&#45;other-width);
   }
 
   .hover-right .right {
-    width: var(--hover-width);
+    width: var(&#45;&#45;hover-width);
   }
 
   .hover-right .left {
-    width: var(--other-width);
+    width: var(&#45;&#45;other-width);
   }
 
   @media (max-width: 800px) {
@@ -152,10 +152,11 @@
       width: 12rem;
     }
   }</style>
-  <title>Landing yujo
+
+  <title>Homepage - Yugo
   </title>
 </head>
-<body>
+<body>-->
 <div class="container">
   <div class="split left">
     <h1>Registrati</h1>
@@ -166,7 +167,6 @@
     <a href="#" class="btn">Bentornato su Yujo</a>
   </div>
 </div>
-
 <script>
   const left = document.querySelector('.left')
   const right = document.querySelector('.right')
@@ -178,5 +178,6 @@
   right.addEventListener('mouseenter', () => container.classList.add('hover-right'))
   right.addEventListener('mouseleave', () => container.classList.remove('hover-right'))
 </script>
+<!--
 </body>
-</html>
+</html>-->
