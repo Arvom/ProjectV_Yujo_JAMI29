@@ -14,13 +14,25 @@ $('document').ready(function () {
         renderPosts()
     }
 
+    function renderHome(){
+        $.get('cookie', function(res){
+            if(res == ""){
+                $.get('landing_sign_log.html', function(data){
+                    $('#css-sheet').attr('href', 'landing.css')
+                    $('body').html('');
+                    $('body').append(data);
+                })
+                // window.location.replace('/landing_sign_log.html')
+            }
+        })
+    }
+
     function renderPosts() {
 
         $.get('post', function (res) {
             $('#dashboard').html('');
 
             for (let i = 0; i < res.length; i++) {
-
 
                 $.get('post.html', function (data) {
                     $('#dashboard').append(data);
@@ -61,7 +73,7 @@ $('document').ready(function () {
         })
     }
 
-    getDashboard();
+    renderHome();
 
     $('#home, #home2, #home3').click(function () {
         getDashboard();

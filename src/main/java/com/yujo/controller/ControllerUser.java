@@ -32,6 +32,11 @@ public class ControllerUser {
         return dao.user(id);
     }
 
+    @GetMapping("email/{email}")
+    public User getOne(@PathVariable String email){
+        return dao.findByEmail( email );
+    }
+
     @PostMapping()
     public boolean post(@RequestBody User u) {
         return dao.add(u);
