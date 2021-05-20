@@ -52,8 +52,10 @@
           <div class="header-top-navigation">
             <nav>
               <ul>
-                <li id="switch1" class="active"><a id="home" class="msg-trigger-btn" style="cursor: default">home</a></li>
-                <li id="switch2" class="msg-trigger"><a class="msg-trigger-btn" href="#" style="cursor: default">profilo</a></li>
+                <li id="switch1" class="active"><a id="home" class="msg-trigger-btn"
+                                                   style="cursor: default">home</a></li>
+                <li id="switch2" class="msg-trigger"><a class="msg-trigger-btn" href="#"
+                                                        style="cursor: default">profilo</a></li>
                 <li id="switch3" class="notification-trigger">
                   <a class="msg-trigger-btn" id="user-list" style="cursor: default">Lista Utenti</a>
                 </li>
@@ -73,7 +75,9 @@
             <div class="header-top-search">
               <form class="top-search-box">
                 <input type="text" placeholder="Cerca qualcosa" class="top-search-field">
-                <button class="top-search-btn"><img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/search/v12/24px.svg"></button>
+                <button class="top-search-btn"><img
+                        src="https://fonts.gstatic.com/s/i/materialiconsoutlined/search/v12/24px.svg">
+                </button>
               </form>
             </div>
           </div>
@@ -139,8 +143,8 @@
               <div class="main-menu-inner header-top-navigation">
                 <nav>
                   <ul class="main-menu">
-                    <li ><a href="#">Bacheca</a></li>
-                    <li class="active"><a href="">Informazioni</a></li>
+                    <li><a href="#">Bacheca</a></li>
+                    <li><a href="">Informazioni</a></li>
                   </ul>
                 </nav>
               </div>
@@ -168,29 +172,34 @@
             </div>
           </aside>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2" >
+        <div class="col-lg-6 order-1 order-lg-2">
           <div class="card" style="width: auto">
+            <h6><a>Aggiorna immagine profilo:</a></h6>
+            <input type="file" value="imgprofilo">
+            <br>
+            <hr>
             <h6><a>Nome e Cognome:</a></h6>
-              <p class="post-desc pb-0">
-                Ceglie Messapica è bella
-              </p>
+            <input class="post-desc pb-0" value="[NOME] [COGNOME]">
+            </input>
+            <br>
             <h6><a>Codice Fiscale:</a></h6>
-              <p class="post-desc pb-0">
-                CF
-              </p>
+            <input class="post-desc pb-0" value="[CF]">
+            </input>
+            <br>
             <h6><a>Residenza:</a></h6>
-              <p class="post-desc pb-0">
-                Residenza
-              </p>
+            <input class="post-desc pb-0" value="[RESIDENZA]">
+            </input>
+            <br>
             <h6><a>N.tel:</a></h6>
-              <p class="post-desc pb-0">
-                Ntel
-              </p>
+            <input class="post-desc pb-0" value="[NTEL]">
+            </input>
+            <br>
+            <button class="edit-btn">AGGIORNA PROFILO</button>
           </div>
         </div>
 
+      </div>
     </div>
-  </div>
   </div>
 </main>
 
