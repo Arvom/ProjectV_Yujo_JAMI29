@@ -22,6 +22,12 @@ body {
     width: 100%;
 }
 
+.backlandiv {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #c20f0f 0%, #c20f0f 50%, #d6d6d6 50%, #d6d6d6 100%);
+}
+
 h1 {
     font-size: 4rem;
     color: #fff;
@@ -59,6 +65,7 @@ h1 {
     width: 15rem;
     padding: 1.5rem;
 }
+
 
 .split.left .btn:hover {
     background-color: var(--right-btn-hover-color);
