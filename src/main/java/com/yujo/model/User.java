@@ -46,13 +46,14 @@ public class User implements IMappable, UserDetails{
 	private String address;
 	private String role;
 	private String image;
+	private String bio;
 
 
 	public User() {
 		super();
 	}
 
-	public User(int id, String email, String password, String tax_code, String name, String surname, String phone, String address, String role, String image) {
+	public User(int id, String email, String password, String tax_code, String name, String surname, String phone, String address, String role, String image, String bio) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -63,6 +64,7 @@ public class User implements IMappable, UserDetails{
 		this.address = address;
 		this.role = role;
 		this.image = image;
+		this.bio=bio;
 	}
 
 	public User(String email, String password, String tax_code, String name, String surname, String phone, String address, String role, String image) {
@@ -191,12 +193,21 @@ public class User implements IMappable, UserDetails{
 		this.image = image;
 	}
 
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
 	@Override
 	public String toString() {
 		return "{id:" + id + ", email:" + email + ", password:" + password + ", tax_code:" + tax_code + ", name:" + name
 				+ ", surname:" + surname + ", phone:" + phone + ", address:" + address + ", role:" + role + ", image:"
-				+ image + "}";
+				+ image + ", bio:" + bio + "}";
 	}
+
 
 
 
