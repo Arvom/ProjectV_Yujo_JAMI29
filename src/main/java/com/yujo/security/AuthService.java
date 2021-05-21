@@ -12,7 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-
+/**
+ *In this classe we manage things like signup and the password encoding
+ */
 @Service
 public class AuthService implements UserDetailsService {
 
@@ -24,6 +26,10 @@ public class AuthService implements UserDetailsService {
         this.dao = dao;
         this.passwordEncoder = passwordEncoder;
     }
+    /**
+     *This method check if mail and user match, and next we manage the exception
+     * @param email
+     */
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -35,7 +41,11 @@ public class AuthService implements UserDetailsService {
         throw new UsernameNotFoundException("Email non trovata");
     }
 
-
+    /**
+     *This method can signup a user and encode his password
+     * @param user
+     * @return boolean
+     */
     public boolean signup (User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
