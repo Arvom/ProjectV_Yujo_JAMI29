@@ -18,7 +18,7 @@ public class DaoUserMySQL extends BasicDao implements IDaoUser{
 	private static final String WHERE_ROLE = " WHERE role=?";
 	private static final String WHERE_EMAIL = " WHERE email=?";
 	private static final String DELETE_USER = "DELETE FROM users WHERE id= ?";
-	private static final String UPDATE_USERS = "UPDATE users SET tax_code=?, name=?, surname=?, phone=?, address=?, image=?";
+	private static final String UPDATE_USERS = "UPDATE users SET tax_code=?, name=?, surname=?, phone=?, address=?, image=?, bio=?";
 	private static final String INSERT_INTO_USERS = "INSERT INTO users (tax_code, name, surname, phone, address, email, password, role) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String WHERE_ID = " WHERE id = ?";
 	private static final String SELECT_USERS = "SELECT * FROM users";
@@ -99,6 +99,7 @@ public class DaoUserMySQL extends BasicDao implements IDaoUser{
 				u.getPhone(),
 				u.getAddress(), 
 				u.getImage(),
+				u.getBio(),
 				u.getId());
 	}
 
