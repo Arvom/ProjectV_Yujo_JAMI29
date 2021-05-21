@@ -1,0 +1,151 @@
+<div class="main-wrapper pt-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 order-2 order-lg-1">
+                <br><br>
+                <aside class="widget-area">
+                    <div class="card card-profile widget-item p-0">
+                        <div class="profile-banner">
+                            <figure class="profile-banner-small">
+                                <a class="profile-thumb-2">
+                                    <img src="[PROFILEPIC]"
+                                    >
+                                </a>
+                            </figure>
+                            <div class="profile-desc text-center">
+                                <h6 class="author" id-author="[IDAUTHOR]">[USERNAME]</h6>
+                                <p id="bio">BIO PROFILO</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card widget-item">
+                        <h4 class="widget-title">Foto caricate</h4>
+                        <div class="widget-body">
+                            <div class="sweet-galley img-gallery">
+                                <div class="row row-5" id="gallery">
+                                    <!-- template immagine-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+                <div class="card card-small">
+                    <div class="share-box-inner">
+                        <div class="profile-thumb">
+                            <a >
+                                <figure class="profile-thumb-middle">
+                                    <img src="[PROFILEPIC]">
+                                </figure>
+                            </a>
+                        </div>
+                        <div class="share-content-box w-100">
+                            <form class="share-text-box">
+                                    <textarea name="share" class="share-text-field" aria-disabled="true"
+                                              placeholder="Dicci qualcosa" data-toggle="modal"
+                                              data-target="#textbox" readonly></textarea>
+                            </form>
+                        </div>
+                        <div class="modal fade" id="textbox" aria-labelledby="textbox">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Come stai?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body custom-scroll">
+                                        <textarea name="content" class="share-field-big custom-scroll"
+                                                  placeholder="Dicci qualcosa" id="add-content"></textarea>
+                                        <label for="image-post">Scegli l'immagine da caricare</label>
+                                        <form id="image-post" enctype="multipart/form-data" action="/file/upload"
+                                              method="POST">
+                                            <input id="file-input" type="file" name="file">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="post-share-btn" data-dismiss="modal">cancel
+                                        </button>
+                                        <button type="button" class="post-share-btn" data-dismiss="modal"
+                                                id="btn-add-post" id-author="[IDAUTHOR]">post
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modal-edit-post" aria-labelledby="modalemodificapost">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modifica il tuo post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body custom-scroll">
+                                <textarea id="edit-content" name="share" class="share-field-big custom-scroll">[PLACEHOLDER_POST]</textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="post-share-btn" data-dismiss="modal">Cancel
+                                </button>
+                                <button type="button" class="post-share-btn" data-dismiss="modal" id="btn-edit-post"
+                                        id-post="[ID]">Modifica post
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modal-edit-comment" aria-labelledby="textbox">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modifica il tuo commento</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body custom-scroll">
+                                <textarea name="share" class="share-field-big custom-scroll" id="comment-content">[CONTENT]</textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="post-share-btn" data-dismiss="modal">cancel
+                                </button>
+                                <button type="button" id-comment="[IDCOMMENT]" class="post-share-btn" data-dismiss="modal" id="btn-edit-comment">modifica commento</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dashboard"></div>
+            </div>
+            <div class="col-lg-3 order-3">
+                <aside class="widget-area">
+                    <div class="card widget-item">
+                        <h4 class="widget-title">Suggeriti</h4>
+                        <div class="widget-body">
+                            <ul class="like-page-list-wrapper" id="suggested">
+                                <!--  template utente suggerito-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card widget-item">
+                        <h4 class="widget-title">Advertisement</h4>
+                        <div class="widget-body">
+                            <div class="add-thumb">
+                                <a href="#">
+                                    <img src="../banner.png" alt="advertisement">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
