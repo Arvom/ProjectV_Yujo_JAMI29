@@ -38,9 +38,9 @@
     </form>
 </div>
 <script>
-    const labels = document.querySelectorAll('.form-control label')
+    const labels2 = document.querySelectorAll('.form-control label')
 
-    labels.forEach(label => {
+    labels2.forEach(label => {
         label.innerHTML = label.innerText
             .split('')
             .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
