@@ -12,6 +12,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *this class represents the tabular entity users on our yujo database
+ * this class implements UserDetails service and iMappable
+ * UserDetails service id a spring security interface, thank to this we can @Override
+ * the method we con use to configure all the register things
+ */
+
 public class User implements IMappable, UserDetails{
 
 	private static final Map<String, Collection<? extends GrantedAuthority>> AUTHORITIES = new HashMap<>();
@@ -38,13 +45,14 @@ public class User implements IMappable, UserDetails{
 	private String phone;
 	private String address;
 	private String role;
+	private String image;
 
 
 	public User() {
 		super();
 	}
 
-	public User(int id, String email, String password, String tax_code, String name, String surname, String phone, String address, String role) {
+	public User(int id, String email, String password, String tax_code, String name, String surname, String phone, String address, String role, String image) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -54,9 +62,10 @@ public class User implements IMappable, UserDetails{
 		this.phone = phone;
 		this.address = address;
 		this.role = role;
+		this.image = image;
 	}
 
-	public User(String email, String password, String tax_code, String name, String surname, String phone, String address, String role) {
+	public User(String email, String password, String tax_code, String name, String surname, String phone, String address, String role, String image) {
 		this.email = email;
 		this.password = password;
 		this.tax_code = tax_code;
@@ -65,6 +74,7 @@ public class User implements IMappable, UserDetails{
 		this.phone = phone;
 		this.address = address;
 		this.role = role;
+		this.image = image;
 	}
 
 	public int getId() {
@@ -172,19 +182,22 @@ public class User implements IMappable, UserDetails{
 		return true;
 	}
 
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", email='" + email + '\'' +
-				", password='" + password + '\'' +
-				", tax_code='" + tax_code + '\'' +
-				", name='" + name + '\'' +
-				", surname='" + surname + '\'' +
-				", phone='" + phone + '\'' +
-				", address='" + address + '\'' +
-				", role='" + role + '\'' +
-				'}';
+		return "{id:" + id + ", email:" + email + ", password:" + password + ", tax_code:" + tax_code + ", name:" + name
+				+ ", surname:" + surname + ", phone:" + phone + ", address:" + address + ", role:" + role + ", image:"
+				+ image + "}";
 	}
+
+
 
 }

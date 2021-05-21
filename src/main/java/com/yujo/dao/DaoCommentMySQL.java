@@ -41,7 +41,12 @@ public class DaoCommentMySQL extends BasicDao implements IDaoComment{
         return c;
     }
 
-
+	
+	 /**
+     *This method will return a List of comments taking as parameter the id_post
+     * @param id_post
+     * @return List
+     */
     @Override
     public List<Comment> comments(int id_post) {
         List<Comment> res = new ArrayList<>();
@@ -53,16 +58,31 @@ public class DaoCommentMySQL extends BasicDao implements IDaoComment{
         return res;
     }
 
+    /**
+     *With this method we can add in our yujo db a new comments row
+     * @param c
+     * @return boolean
+     */
     @Override
     public boolean add(Comment c) {
         return executeAndIsModified(INSERT_INTO_COMMENTS, c.getUser().getId(), c.getPost().getId(), c.getContent());
     }
 
+    /**
+     *With this method we can delete a comment row in our database
+     * @param c
+     * @return boolean
+     */
     @Override
     public boolean delete(int id) {
         return executeAndIsModified(DELETE_COMMENTS+WHERE_ID,id);
     }
 
+    /**
+     *With this method we can modify a row in our db
+     * @param c
+     * @return boolean
+     */
     @Override
     public boolean update(Comment c) {
         return executeAndIsModified(UPDATE_COMMENTS+WHERE_ID, c.getContent(), c.getId());

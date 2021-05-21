@@ -1,5 +1,10 @@
 package com.yujo.model;
 import com.yujo.util.IMappable;
+
+/**
+ *this class represents the tabular entity comments on our database
+ */
+
 public class Comment implements IMappable {
 	
 	private int id;

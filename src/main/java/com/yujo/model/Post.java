@@ -1,15 +1,13 @@
 package com.yujo.model;
 
-import com.yujo.service.FileStorageService;
 import com.yujo.util.IMappable;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.multipart.MultipartFile;
 
+/**
+ *this class represents the tabular entity posts on our database
+ */
 public class Post implements IMappable {
 
-    static @Value("${file.upload}")
-    String uploadDir;
+   
 
     private int id;
     private User user;

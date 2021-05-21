@@ -3,6 +3,9 @@ package com.yujo.model;
 
 import com.yujo.util.IMappable;
 
+/**
+ *this class represents the tabular entity options on our database
+ */
 public class Option implements IMappable{
 
 	private int id;
@@ -10,16 +13,18 @@ public class Option implements IMappable{
 	private String content;
 	private String id_users;
 	private Post post;
+	private int vote;
 	
-	public Option(int id, User user, String content, String id_users, Post post) {
+
+	public Option(int id, User user, String content, String id_users, Post post, int vote) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.content = content;
 		this.id_users = id_users;
 		this.post = post;
+		this.vote = vote;
 	}
-	
 
 	public Option() {
 		super();
@@ -62,6 +67,17 @@ public class Option implements IMappable{
 		return post;
 	}
 
+	
+	public int getVote() {
+		return vote;
+	}
+
+
+	public void setVote(int vote) {
+		this.vote = vote;
+	}
+
+
 	public void setPost(Post post) {
 		this.post = post;
 	}
@@ -69,7 +85,7 @@ public class Option implements IMappable{
 	@Override
 	public String toString() {
 		return "{id:" + id + ", user:" + user + ", content:" + content + ", id_users:" + id_users + ", post:" + post
-				+ "}";
+				+ ", vote:" + vote + "}";
 	}
 	
 }
